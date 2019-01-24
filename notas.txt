@@ -1,0 +1,81 @@
+Mapa:
+=====
+1 room inicial colocado random
+Puede ser un room normal, en cuyo caso sigue el while
+Primer room puede ser una caverna (45% pared, 55% suelo) y no sigue el paso del while
+
+While quepa room
+    crea un room encima de la inicial, y lo mueve hasta que quepa. Pone una puerta
+
+5 rondas de suavizado: cada tile con menos de 4 suelos se convierte en pared. Cada tile de pared con seis o mas suelos se convierte en suelo.
+Esto hace que se creen "blobs" de suelo. El blob más grande es pared inicial.
+
+varias formas de generar rooms, elegidas random:
+- 2 rectángulos superpuestos
+- Un donut grande
+- Un circulo
+- A veces la room tiene un pasillo que sale desde un punto random y requiere que al final del pasillo haya un room
+
+Proceso de crear más conexiones:
+Si un muro tiene floor a ambos lados, crea una puerta
+
+Lakes:
+======
+-lava
+-agua
+-chasm
+-brimstone (gas inflamable)
+Lo crea usando celullar automata method
+Luego lo mueve hasta que encuentra un sitio donde colocarlo de tal forma que lo que no tenga un lake todavía siga conexo. Si la colocación falla 20 veces, se prueba uno más pequeño y se prueba de nuevo.
+
+Local features:
+===============
+tufts of grass
+outgrowths of crystal
+mud pits
+hidden traps
+statues
+torches
+...
+Se colocan en un sitio aleatorio
+Algunos se expanden en blobs. Cada vez que se expanden, se reduce la probabilidad de que continúen expandiéndose.
+
+Machines:
+=========
+Clusters de propiedades de terreno relacionadas. Si interactúas con una parte del terreno, hace algo con otra parte del terreno. Se especifica tambien si debe de aparecer cerca de la puerta, en el lado contrario...
+Tipos:
+Room machines: ocupan el interior de un area con un cuello de botella
+door machines: generadas por room machines para proteger la puerta
+area machines: pueden aparecer en cualquier sitio y se expanden hasta tener el tamaño adecuado.
+Algunos machines pueden cambiar la generación del mapa, incluso re-generarla
+
+Con esto puede generarse túneles de goblins, puertas con sus llaves, salas especiales...
+
+Escaleras:
+==========
+Las que suben, se intenta colocar lo más cerca posible de las escaleras del piso anterior.
+Hacia abajo: random, lo suficientemente lejos de las que suben.
+Las escaleras siempre están incrustadas en la pared.
+
+Limpieza:
+=========
+Si hay una abertura diagonal entre 2 paredes, borramos una pared
+Si una puerta tiene menos de dos paredes adyacentes, borramos la puerta
+SSi una pared tiene terreno impasable a ambos lados, borramos la pared
+Se construye puentes encima de chasms donde tenga sentido (que acorten distancia)
+
+Items:
+======
+Se añaden a los generados con los machines
+Cada tile tiene una puntuación: 
+- por cada puerta, puerta secreta, terreno dificil que hay que atravesar para llegar suma puntos para que aparezca un item.
+- Si está en un pasillo o en terreno dañino, la puntuación es cero
+- Si hay otro item cerca, se reducen los puntos.
+- En niveles altos de la dungeon, hay más puntos.
+- En niveles bajos de la dungeon, hay cada vez menos puntos
+
+Monstruos:
+==========
+Se colocan uniformemente
+Nunca a la vista de las escaleras que suben
+
