@@ -1,3 +1,4 @@
+
 function rectangular(grid, maxLength, maxHeight){
     let length = Math.floor(Math.random() * maxLength + 1);
     let height = Math.floor(Math.random() * maxHeight + 1);
