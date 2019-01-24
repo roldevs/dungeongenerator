@@ -79,3 +79,4 @@ Monstruos:
 Se colocan uniformemente
 Nunca a la vista de las escaleras que suben
 
+Reference: https://www.rockpapershotgun.com/2015/07/28/how-do-roguelikes-generate-levels/
