@@ -11,15 +11,15 @@ const mapConnectivityModule = function () {
             for (j = 0; j < matrix.length; j++) {
                 if(matrix[i][j] === '.'){
                     myGraph.setNode(i.toString() + "," + j.toString(), i.toString() + "," + j.toString());
-                    if (i > 0 && j > 0 && matrix[i-1][j-1] ==='.') { 
-                        myGraph.setEdge(i.toString() + "," + j.toString(), (i - 1).toString() + "," + (j - 1).toString()); 
-                        }
+                    //if (i > 0 && j > 0 && matrix[i-1][j-1] ==='.') { 
+                    //    myGraph.setEdge(i.toString() + "," + j.toString(), (i - 1).toString() + "," + (j - 1).toString()); 
+                    //    }
                     if (i > 0 && matrix[i-1][j] === '.') { 
                         myGraph.setEdge(i.toString() + "," + j.toString(), (i - 1).toString() + "," + j.toString()); 
                         }
-                    if (i > 0 && j < matrix[i].length && matrix[i-1][j+1] === '.') { 
-                        myGraph.setEdge(i.toString() + "," + j.toString(), (i - 1).toString() + "," + (j + 1).toString()); 
-                        }
+                    //if (i > 0 && j < matrix[i].length && matrix[i-1][j+1] === '.') { 
+                    //    myGraph.setEdge(i.toString() + "," + j.toString(), (i - 1).toString() + "," + (j + 1).toString()); 
+                    //    }
                     if (j > 0 && matrix[i][j-1]) { 
                         myGraph.setEdge(i.toString() + "," + j.toString(), i.toString() + "," + (j - 1).toString()); 
                         }
