@@ -11,7 +11,8 @@ describe("mapConnectivityModule", function () {
             [null, null, null, null, null]
         ];
         it("#Floor is connected", function () {
-            myGraph = new mapConnectivityModule(map);
+            myGraph = new mapConnectivityModule();
+            myGraph.init(map);
             const connected = myGraph.checkConnectivity();
             expect(connected).to.equal(true);
         });
@@ -25,7 +26,8 @@ describe("mapConnectivityModule", function () {
             [null, null, '.', null, null]
         ];
         it("#Floor is not connected", function () {
-            myGraph = new mapConnectivityModule(map);
+            myGraph = new mapConnectivityModule();
+            myGraph.init(map);
             const connected = myGraph.checkConnectivity();
             expect(connected).to.equal(false);
         });
