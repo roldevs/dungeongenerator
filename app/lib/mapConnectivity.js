@@ -24,8 +24,6 @@ const mapConnectivityModule = function () {
                         myGraph.setEdge(i.toString() + "," + j.toString(), i.toString() + "," + (j - 1).toString()); 
                         }
                 }
-
-                //return myGraph;
             }
         }
     }
